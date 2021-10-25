@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Web1",
+				"name": "Call Google",
 				"type": "WebActivity",
 				"dependsOn": [],
 				"policy": {
@@ -15,10 +15,12 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"url": "https://www.google.com",
 					"connectVia": {
 						"referenceName": "AutoResolveIntegrationRuntime",
 						"type": "IntegrationRuntimeReference"
-					}
+					},
+					"method": "GET"
 				}
 			}
 		],
