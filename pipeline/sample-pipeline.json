@@ -43,9 +43,6 @@
 			"folderPath": {
 				"type": "string",
 				"defaultValue": "@concat(triggerBody().folderPath, \"/\",  triggerBody().fileName)"
-			},
-			"fileName": {
-				"type": "string"
 			}
 		},
 		"annotations": []
