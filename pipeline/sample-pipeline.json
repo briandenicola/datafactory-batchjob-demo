@@ -23,7 +23,7 @@
 					"method": "POST",
 					"headers": {
 						"Content-Type": "application/json",
-						"BrokerProperties": "@concat('{\\\"CorrelationId\\\": \\\"',pipeline().RunId,'\\\"}')"
+						"BrokerProperties": "@concat('{\"CorrelationId\": \"',pipeline().RunId,'\"}')"
 					},
 					"body": {
 						"value": "{\n  \"message\": {\n      \"file\": @concat(@triggerBody().folderPath,\"/\", @triggerBody().fileName)\n  }\n}",
