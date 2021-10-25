@@ -13,7 +13,8 @@
 		],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
-			"blobPathBeginsWith": "/input/blobs/",
+			"blobPathBeginsWith": "/input/blobs/test",
+			"blobPathEndsWith": ".csv",
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/5cd8aef3-0105-48cd-99bf-f616497eab80/resourceGroups/DevSub01_BatchProcessingDemo_RG/providers/Microsoft.Storage/storageAccounts/bjdsaf81dfea",
 			"events": [
