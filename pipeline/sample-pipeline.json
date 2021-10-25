@@ -13,6 +13,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"url": "https://bjdsb-f81dfea.servicebus.windows.net/batchjob/message",
 					"connectVia": {
