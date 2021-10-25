@@ -8,6 +8,9 @@
 				"pipelineReference": {
 					"referenceName": "sample-pipeline",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"fileName": "@triggerBody().fileName"
 				}
 			}
 		],
