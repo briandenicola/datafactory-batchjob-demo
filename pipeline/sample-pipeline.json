@@ -39,6 +39,16 @@
 				}
 			}
 		],
+		"parameters": {
+			"folderPath": {
+				"type": "string",
+				"defaultValue": "triggerBody().folderPath"
+			},
+			"fileName": {
+				"type": "string",
+				"defaultValue": "triggerBody().fileName"
+			}
+		},
 		"annotations": []
 	}
 }
