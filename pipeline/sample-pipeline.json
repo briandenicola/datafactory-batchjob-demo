@@ -29,7 +29,7 @@
 						}
 					},
 					"body": {
-						"value": "{ \n  \"message\": {\n     \"file\": @pipeline().parameters.fileName\n  }\n}",
+						"value": "@pipeline().parameters.fileName",
 						"type": "Expression"
 					},
 					"authentication": {
