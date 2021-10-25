@@ -147,6 +147,7 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
+					"blobPathBeginsWith": "/input/blobs/2021",
 					"blobPathEndsWith": ".csv",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('new-file-via-nfs_properties_typeProperties_scope')]",
