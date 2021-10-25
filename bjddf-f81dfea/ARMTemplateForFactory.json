@@ -35,7 +35,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Call Google",
+						"name": "Push to Service Bus",
 						"type": "WebActivity",
 						"dependsOn": [],
 						"policy": {
@@ -47,13 +47,31 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"url": "https://www.google.com",
+							"url": "https://bjdsb-f81dfea.servicebus.windows.net/batchjob/message",
 							"connectVia": {
 								"referenceName": "AutoResolveIntegrationRuntime",
 								"type": "IntegrationRuntimeReference"
 							},
-							"method": "GET",
-							"headers": {}
+							"method": "POST",
+							"headers": {
+								"CustomHeader-Version": "1.0",
+								"Content-Type": "Application/json",
+								"BrokerProperties": {
+									"value": "concat('{\\\"CorrelationId\\\": \\\"',pipeline().RunId,'\\\"}')",
+									"type": "Expression"
+								}
+							},
+							"body": {
+								"value": "{\n  \"message\": {\n      \"file\": @concat(@triggerBody().folderPath, \"/\", @triggerBody().fileName)\n   }\n}",
+								"type": "Expression"
+							},
+							"authentication": {
+								"resource": "https://servicebus.azure.net",
+								"credential": {
+									"referenceName": "bjddf-f81dfea-identity",
+									"type": "CredentialReference"
+								}
+							}
 						}
 					}
 				],
@@ -64,7 +82,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+				"[concat(variables('factoryId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]",
+				"[concat(variables('factoryId'), '/credentials/bjddf-f81dfea-identity')]"
 			]
 		},
 		{
