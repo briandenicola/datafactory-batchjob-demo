@@ -25,7 +25,7 @@
 						"CustomHeader-Version": "1.0",
 						"Content-Type": "application/json",
 						"BrokerProperties": {
-							"value": "@concat('{\\\"CorrelationId\\\": \\\"',pipeline().RunId,'\\\"}')",
+							"value": "@pipeline.runId()",
 							"type": "Expression"
 						}
 					},
