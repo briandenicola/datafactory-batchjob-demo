@@ -103,22 +103,18 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"url": "https://bjdsb-f81dfea.servicebus.windows.net/batchjob/message",
+							"url": "https://bjdsb-f81dfea.servicebus.windows.net/batchjob/messages",
 							"connectVia": {
 								"referenceName": "AutoResolveIntegrationRuntime",
 								"type": "IntegrationRuntimeReference"
 							},
 							"method": "POST",
 							"headers": {
-								"CustomHeader-Version": "1.0",
 								"Content-Type": "application/json",
-								"BrokerProperties": {
-									"value": "@pipeline.runId()",
-									"type": "Expression"
-								}
+								"BrokerProperties": "@concat('{\"CorrelationId\": \"',pipeline().RunId,'\"}')"
 							},
 							"body": {
-								"value": "{\n  \"message\": {\n      \"file\": @concat(@triggerBody().folderPath, \"/\", @triggerBody().fileName)\n   }\n}",
+								"value": "{\n  \"message\": {\n      \"file\": @concat(@triggerBody().folderPath,\"/\", @triggerBody().fileName)\n  }\n}",
 								"type": "Expression"
 							},
 							"authentication": {
