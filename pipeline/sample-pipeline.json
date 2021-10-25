@@ -44,8 +44,10 @@
 		],
 		"parameters": {
 			"fileName": {
-				"type": "string",
-				"defaultValue": "@triggerBody().fileName"
+				"type": "string"
+			},
+			"filePath": {
+				"type": "string"
 			}
 		},
 		"annotations": []
