@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "bjddf-f81dfea"
+		},
+		"bjdsaf81dfea_properties_typeProperties_serviceEndpoint": {
+			"value": "https://bjdsaf81dfea.blob.core.windows.net"
+		},
+		"new-file-via-nfs_properties_typeProperties_scope": {
+			"value": "/subscriptions/5cd8aef3-0105-48cd-99bf-f616497eab80/resourceGroups/DevSub01_BatchProcessingDemo_RG/providers/Microsoft.Storage/storageAccounts/bjdsaf81dfea"
+		},
+		"bjdsaf81dfea_properties_privateLinkResourceId": {
+			"value": "/subscriptions/5cd8aef3-0105-48cd-99bf-f616497eab80/resourceGroups/DevSub01_BatchProcessingDemo_RG/providers/Microsoft.Storage/storageAccounts/bjdsaf81dfea"
+		},
+		"bjdsaf81dfea_properties_groupId": {
+			"value": "blob"
+		}
+	}
+}

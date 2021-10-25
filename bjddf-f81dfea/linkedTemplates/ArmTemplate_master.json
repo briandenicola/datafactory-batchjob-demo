@@ -1,0 +1,70 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "bjddf-f81dfea"
+		},
+		"bjdsaf81dfea_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://bjdsaf81dfea.blob.core.windows.net"
+		},
+		"new-file-via-nfs_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/5cd8aef3-0105-48cd-99bf-f616497eab80/resourceGroups/DevSub01_BatchProcessingDemo_RG/providers/Microsoft.Storage/storageAccounts/bjdsaf81dfea"
+		},
+		"bjdsaf81dfea_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/5cd8aef3-0105-48cd-99bf-f616497eab80/resourceGroups/DevSub01_BatchProcessingDemo_RG/providers/Microsoft.Storage/storageAccounts/bjdsaf81dfea"
+		},
+		"bjdsaf81dfea_properties_groupId": {
+			"type": "string",
+			"defaultValue": "blob"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "bjddf-f81dfea_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"bjdsaf81dfea_properties_privateLinkResourceId": {
+						"value": "[parameters('bjdsaf81dfea_properties_privateLinkResourceId')]"
+					},
+					"bjdsaf81dfea_properties_groupId": {
+						"value": "[parameters('bjdsaf81dfea_properties_groupId')]"
+					},
+					"bjdsaf81dfea_properties_typeProperties_serviceEndpoint": {
+						"value": "[parameters('bjdsaf81dfea_properties_typeProperties_serviceEndpoint')]"
+					},
+					"new-file-via-nfs_properties_typeProperties_scope": {
+						"value": "[parameters('new-file-via-nfs_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
