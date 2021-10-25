@@ -21,6 +21,20 @@
 						"type": "IntegrationRuntimeReference"
 					},
 					"method": "POST",
+					"headers": {
+						"CustomHeader-Version": "1.0",
+						"Content-Type": "Application/json",
+						"BrokerProperties": {
+							"value": "concat('{\\\"CorrelationId\\\": \\\"',pipeline().RunId,'\\\"}')",
+							"type": "Expression"
+						}
+					},
+					"body": {
+						"message": {
+							"value": "@variables('OutputDetails')",
+							"type": "Expression"
+						}
+					},
 					"authentication": {
 						"resource": "https://servicebus.azure.net",
 						"credential": {
@@ -29,6 +43,12 @@
 						}
 					}
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": []
 			}
 		],
 		"annotations": []
