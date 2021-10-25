@@ -22,15 +22,10 @@
 					},
 					"method": "POST",
 					"headers": {
-						"CustomHeader-Version": "1.0",
-						"Content-Type": "application/json",
-						"BrokerProperties": {
-							"value": "@pipeline.runId()",
-							"type": "Expression"
-						}
+						"Content-Type": "application/json"
 					},
 					"body": {
-						"value": "{\n  \"message\": {\n      \"file\": @concat(@triggerBody().folderPath, \"/\", @triggerBody().fileName)\n   }\n}",
+						"value": "{\n  \"message\": {\n      \"file\": \"This is a simple test message\"\n  }\n}",
 						"type": "Expression"
 					},
 					"authentication": {
