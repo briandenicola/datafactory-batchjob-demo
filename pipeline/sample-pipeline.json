@@ -15,12 +15,12 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://bjdsb-f81dfea.servicebus.windows.net/batchjob/message",
+					"url": "https://bjdsb-f81dfea.servicebus.windows.net/batchjob/messages",
 					"connectVia": {
 						"referenceName": "AutoResolveIntegrationRuntime",
 						"type": "IntegrationRuntimeReference"
 					},
-					"method": "PUT",
+					"method": "POST",
 					"headers": {
 						"Content-Type": "application/json"
 					},
