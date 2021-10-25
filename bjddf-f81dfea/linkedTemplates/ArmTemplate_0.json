@@ -111,10 +111,13 @@
 							"method": "POST",
 							"headers": {
 								"Content-Type": "application/json",
-								"BrokerProperties": "@concat('{\"CorrelationId\": \"',pipeline().RunId,'\"}')"
+								"BrokerProperties": {
+									"value": "@concat('{\"CorrelationId\": \"',pipeline().RunId,'\"}')",
+									"type": "Expression"
+								}
 							},
 							"body": {
-								"value": "{\n  \"message\": {\n      \"file\": @parameters('fileFQDN')\n  }\n}",
+								"value": "{ \n  \"message\": {\n     \"file\": @variables('fileFQDN')\n  }\n}",
 								"type": "Expression"
 							},
 							"authentication": {
@@ -131,9 +134,9 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"parameters": {
+				"variables": {
 					"fileFQDN": {
-						"type": "string",
+						"type": "String",
 						"defaultValue": "@concat(triggerBody().folderPath, \"/\",  triggerBody().fileName)"
 					}
 				},

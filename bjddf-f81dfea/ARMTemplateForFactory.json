@@ -11,6 +11,10 @@
 			"type": "string",
 			"defaultValue": "https://bjdsaf81dfea.blob.core.windows.net"
 		},
+		"new-file-via-nfs_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/5cd8aef3-0105-48cd-99bf-f616497eab80/resourceGroups/DevSub01_BatchProcessingDemo_RG/providers/Microsoft.Storage/storageAccounts/bjdsaf81dfea"
+		},
 		"bjdsaf81dfea_properties_privateLinkResourceId": {
 			"type": "string",
 			"defaultValue": "/subscriptions/5cd8aef3-0105-48cd-99bf-f616497eab80/resourceGroups/DevSub01_BatchProcessingDemo_RG/providers/Microsoft.Storage/storageAccounts/bjdsaf81dfea"
@@ -18,10 +22,6 @@
 		"bjdsaf81dfea_properties_groupId": {
 			"type": "string",
 			"defaultValue": "blob"
-		},
-		"new-file-via-nfs_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5cd8aef3-0105-48cd-99bf-f616497eab80/resourceGroups/DevSub01_BatchProcessingDemo_RG/providers/Microsoft.Storage/storageAccounts/bjdsaf81dfea"
 		}
 	},
 	"variables": {
@@ -55,10 +55,13 @@
 							"method": "POST",
 							"headers": {
 								"Content-Type": "application/json",
-								"BrokerProperties": "@concat('{\"CorrelationId\": \"',pipeline().RunId,'\"}')"
+								"BrokerProperties": {
+									"value": "@concat('{\"CorrelationId\": \"',pipeline().RunId,'\"}')",
+									"type": "Expression"
+								}
 							},
 							"body": {
-								"value": "{\n  \"message\": {\n      \"file\": @parameters('fileFQDN')\n  }\n}",
+								"value": "{ \n  \"message\": {\n     \"file\": @variables('fileFQDN')\n  }\n}",
 								"type": "Expression"
 							},
 							"authentication": {
@@ -75,9 +78,9 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"parameters": {
+				"variables": {
 					"fileFQDN": {
-						"type": "string",
+						"type": "String",
 						"defaultValue": "@concat(triggerBody().folderPath, \"/\",  triggerBody().fileName)"
 					}
 				},
@@ -111,6 +114,36 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]",
 				"[concat(variables('factoryId'), '/credentials/bjddf-f81dfea-identity')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/new-file-via-nfs')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "sample-pipeline",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathEndsWith": ".csv",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('new-file-via-nfs_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/sample-pipeline')]"
 			]
 		},
 		{
@@ -167,36 +200,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/new-file-via-nfs')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "sample-pipeline",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathEndsWith": ".csv",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('new-file-via-nfs_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/sample-pipeline')]"
 			]
 		}
 	]
