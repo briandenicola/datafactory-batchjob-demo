@@ -137,7 +137,7 @@
 				"variables": {
 					"fileFQDN": {
 						"type": "String",
-						"defaultValue": "@concat(triggerBody().folderPath, \"/\",  triggerBody().fileName)"
+						"defaultValue": "@concat(triggerBody().folderPath, '/',  triggerBody().fileName)"
 					}
 				},
 				"annotations": []
