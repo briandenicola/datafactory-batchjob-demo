@@ -13,7 +13,6 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
 				"typeProperties": {
 					"url": "https://bjdsb-f81dfea.servicebus.windows.net/batchjob/message",
 					"connectVia": {
@@ -30,10 +29,8 @@
 						}
 					},
 					"body": {
-						"message": {
-							"value": "@variables('OutputDetails')",
-							"type": "Expression"
-						}
+						"value": "{\n  \"message\": {\n      \"file\": @concat(@triggerBody().folderPath, \"/\", @triggerBody().fileName)\n   }\n}",
+						"type": "Expression"
 					},
 					"authentication": {
 						"resource": "https://servicebus.azure.net",
@@ -43,12 +40,6 @@
 						}
 					}
 				}
-			},
-			{
-				"name": "Set variable1",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"userProperties": []
 			}
 		],
 		"annotations": []
