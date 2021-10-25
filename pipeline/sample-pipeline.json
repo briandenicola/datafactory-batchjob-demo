@@ -22,7 +22,8 @@
 					},
 					"method": "POST",
 					"headers": {
-						"Content-Type": "application/json"
+						"Content-Type": "application/json",
+						"BrokerProperties": "@concat('{\\\"CorrelationId\\\": \\\"',pipeline().RunId,'\\\"}')"
 					},
 					"body": {
 						"value": "{\n  \"message\": {\n      \"file\": \"This is a simple test message\"\n  }\n}",
