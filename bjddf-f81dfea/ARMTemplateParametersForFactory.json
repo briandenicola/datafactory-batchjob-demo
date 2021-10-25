@@ -8,6 +8,12 @@
 		"bjdsaf81dfea_properties_typeProperties_serviceEndpoint": {
 			"value": "https://bjdsaf81dfea.blob.core.windows.net"
 		},
+		"new-file-via-nfs_properties_sample-pipeline_parameters_fileName": {
+			"value": "@triggerBody().fileName"
+		},
+		"new-file-via-nfs_properties_sample-pipeline_parameters_filePath": {
+			"value": "@triggerBody().folderPath"
+		},
 		"new-file-via-nfs_properties_typeProperties_scope": {
 			"value": "/subscriptions/5cd8aef3-0105-48cd-99bf-f616497eab80/resourceGroups/DevSub01_BatchProcessingDemo_RG/providers/Microsoft.Storage/storageAccounts/bjdsaf81dfea"
 		},

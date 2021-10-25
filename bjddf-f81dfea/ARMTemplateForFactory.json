@@ -11,6 +11,14 @@
 			"type": "string",
 			"defaultValue": "https://bjdsaf81dfea.blob.core.windows.net"
 		},
+		"new-file-via-nfs_properties_sample-pipeline_parameters_fileName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"new-file-via-nfs_properties_sample-pipeline_parameters_filePath": {
+			"type": "string",
+			"defaultValue": "@triggerBody().folderPath"
+		},
 		"new-file-via-nfs_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/5cd8aef3-0105-48cd-99bf-f616497eab80/resourceGroups/DevSub01_BatchProcessingDemo_RG/providers/Microsoft.Storage/storageAccounts/bjdsaf81dfea"
@@ -80,8 +88,10 @@
 				},
 				"parameters": {
 					"fileName": {
-						"type": "string",
-						"defaultValue": "@triggerBody().fileName"
+						"type": "string"
+					},
+					"filePath": {
+						"type": "string"
 					}
 				},
 				"annotations": []
@@ -129,7 +139,10 @@
 							"referenceName": "sample-pipeline",
 							"type": "PipelineReference"
 						},
-						"parameters": {}
+						"parameters": {
+							"fileName": "[parameters('new-file-via-nfs_properties_sample-pipeline_parameters_fileName')]",
+							"filePath": "[parameters('new-file-via-nfs_properties_sample-pipeline_parameters_filePath')]"
+						}
 					}
 				],
 				"type": "BlobEventsTrigger",

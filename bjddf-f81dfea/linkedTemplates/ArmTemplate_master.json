@@ -11,6 +11,14 @@
 			"type": "string",
 			"defaultValue": "https://bjdsaf81dfea.blob.core.windows.net"
 		},
+		"new-file-via-nfs_properties_sample-pipeline_parameters_fileName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"new-file-via-nfs_properties_sample-pipeline_parameters_filePath": {
+			"type": "string",
+			"defaultValue": "@triggerBody().folderPath"
+		},
 		"new-file-via-nfs_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/5cd8aef3-0105-48cd-99bf-f616497eab80/resourceGroups/DevSub01_BatchProcessingDemo_RG/providers/Microsoft.Storage/storageAccounts/bjdsaf81dfea"
@@ -58,6 +66,12 @@
 					},
 					"bjdsaf81dfea_properties_typeProperties_serviceEndpoint": {
 						"value": "[parameters('bjdsaf81dfea_properties_typeProperties_serviceEndpoint')]"
+					},
+					"new-file-via-nfs_properties_sample-pipeline_parameters_fileName": {
+						"value": "[parameters('new-file-via-nfs_properties_sample-pipeline_parameters_fileName')]"
+					},
+					"new-file-via-nfs_properties_sample-pipeline_parameters_filePath": {
+						"value": "[parameters('new-file-via-nfs_properties_sample-pipeline_parameters_filePath')]"
 					},
 					"new-file-via-nfs_properties_typeProperties_scope": {
 						"value": "[parameters('new-file-via-nfs_properties_typeProperties_scope')]"
