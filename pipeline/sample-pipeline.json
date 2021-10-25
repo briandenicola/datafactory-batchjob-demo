@@ -29,7 +29,7 @@
 						}
 					},
 					"body": {
-						"value": "@pipeline().parameters.fileName",
+						"value": "@concat('{ \\\"message\\\": { \\\"file\\\":', pipeline().parameters.filePath, '/',  pipeline().parameters.fileName, '}}')",
 						"type": "Expression"
 					},
 					"authentication": {
