@@ -1,0 +1,19 @@
+{
+	"name": "bjdsaf81dfea",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"serviceEndpoint": "https://bjdsaf81dfea.blob.core.windows.net",
+			"accountKind": "BlockBlobStorage",
+			"credential": {
+				"referenceName": "bjddf-f81dfea-identity",
+				"type": "CredentialReference"
+			}
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
