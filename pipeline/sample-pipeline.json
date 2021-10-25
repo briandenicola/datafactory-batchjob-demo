@@ -40,7 +40,7 @@
 			}
 		],
 		"parameters": {
-			"folderPath": {
+			"fileFQDN": {
 				"type": "string",
 				"defaultValue": "@concat(triggerBody().folderPath, \"/\",  triggerBody().fileName)"
 			}
