@@ -58,7 +58,7 @@
 								"BrokerProperties": "@concat('{\"CorrelationId\": \"',pipeline().RunId,'\"}')"
 							},
 							"body": {
-								"value": "{\n  \"message\": {\n      \"file\": @concat(triggerBody().folderPath,\"/\", triggerBody().fileName)\n  }\n}",
+								"value": "{\n  \"message\": {\n      \"file\": @parameters('fileFQDN')\n  }\n}",
 								"type": "Expression"
 							},
 							"authentication": {
@@ -74,6 +74,12 @@
 				"policy": {
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
+				},
+				"parameters": {
+					"fileFQDN": {
+						"type": "string",
+						"defaultValue": "@concat(triggerBody().folderPath, \"/\",  triggerBody().fileName)"
+					}
 				},
 				"annotations": []
 			},
