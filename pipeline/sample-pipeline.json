@@ -26,7 +26,7 @@
 						"BrokerProperties": "@concat('{\"CorrelationId\": \"',pipeline().RunId,'\"}')"
 					},
 					"body": {
-						"value": "{\n  \"message\": {\n      \"file\": @concat(@triggerBody().folderPath,\"/\", @triggerBody().fileName)\n  }\n}",
+						"value": "{\n  \"message\": {\n      \"file\": @concat(triggerBody().folderPath,\"/\", triggerBody().fileName)\n  }\n}",
 						"type": "Expression"
 					},
 					"authentication": {
