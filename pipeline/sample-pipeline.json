@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Call Google",
+				"name": "Push to Service Bus",
 				"type": "WebActivity",
 				"dependsOn": [],
 				"policy": {
@@ -15,12 +15,19 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://www.google.com",
+					"url": "https://bjdsb-f81dfea.servicebus.windows.net/batchjob/message",
 					"connectVia": {
 						"referenceName": "AutoResolveIntegrationRuntime",
 						"type": "IntegrationRuntimeReference"
 					},
-					"method": "GET"
+					"method": "POST",
+					"authentication": {
+						"resource": "https://servicebus.azure.net",
+						"credential": {
+							"referenceName": "bjddf-f81dfea-identity",
+							"type": "CredentialReference"
+						}
+					}
 				}
 			}
 		],
