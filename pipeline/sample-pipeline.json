@@ -26,7 +26,7 @@
 						"BrokerProperties": "@concat('{\"CorrelationId\": \"',pipeline().RunId,'\"}')"
 					},
 					"body": {
-						"value": "{\n  \"message\": {\n      \"file\": @parameters('fileFQDN')\n  }\n}",
+						"value": "{ \n  \"message\": {\n     \"file\": @variables('fileFQDN')\n  }\n}",
 						"type": "Expression"
 					},
 					"authentication": {
