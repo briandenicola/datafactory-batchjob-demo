@@ -42,11 +42,10 @@
 		"parameters": {
 			"folderPath": {
 				"type": "string",
-				"defaultValue": "triggerBody().folderPath"
+				"defaultValue": "@concat(triggerBody().folderPath, \"/\",  triggerBody().fileName)"
 			},
 			"fileName": {
-				"type": "string",
-				"defaultValue": "triggerBody().fileName"
+				"type": "string"
 			}
 		},
 		"annotations": []
