@@ -18,24 +18,24 @@ spec:
       metadata:
         labels:
           app: adf-batch-job-demo-job
-          aadpodidbinding: bjdbatchdemo-batchjob-identity
+          aadpodidbinding: {{ .Values.pod_identity.binding }}
       spec:
         containers:
         - name: adf-batch-job-demo-job
-          image: bjd145.azurecr.io/queue-processor:a28a5f
+          image: {{ print .Values.image.repository ":" .Values.image.version  }}
           env:
             - name: SERVICE_BUS
-              value: bjdsb-f81dfea
+              value: {{ .Values.service_bus.namespace }}
             - name: QUEUE_NAME
-              value: batchjob
+              value: {{ .Values.service_bus.queue_name }}
             - name: MSI_CLIENT_ID
-              value: a94c4f46-fef5-442a-88c2-bb6065aabb18
+              value: {{ .Values.pod_identity.client_id }}
         restartPolicy: Never
   triggers:
   - type: azure-servicebus
     metadata:
-      queueName: batchjob
-      namespace: bjdsb-f81dfea
+      queueName: {{ .Values.service_bus.queue_name }}
+      namespace: {{ .Values.service_bus.namespace }}
       messageCount: "2"
     authenticationRef:
         name: adf-batch-job-demo-auth 

@@ -1,0 +1,11 @@
+pod_identity: 
+  binding: bjdbatchdemo-batchjob-identity
+  client_id: a94c4f46-fef5-442a-88c2-bb6065aabb18
+  
+image:
+  repository: bjd145.azurecr.io/queue-processor
+  version: a28a5f
+
+service_bus:
+  namespace: bjdsb-f81dfea
+  queue_name: batchjob
