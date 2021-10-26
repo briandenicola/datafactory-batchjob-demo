@@ -1,0 +1,41 @@
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: adf-batch-job-demo-auth
+spec:
+  podIdentity:
+    provider: azure
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledJob
+metadata:
+  name: adf-batch-job-demo-job
+spec:
+  jobTargetRef:
+    parallelism: 1 
+    completions: 1 
+    template:
+      metadata:
+        labels:
+          app: adf-batch-job-demo-job
+          aadpodidbinding: bjdbatchdemo-batchjob-identity
+      spec:
+        containers:
+        - name: adf-batch-job-demo-job
+          image: bjd145.azurecr.io/queue-processor:c3cf0ee
+          env:
+            - name: SERVICE_BUS
+              value: bjdsb-f81dfea
+            - name: QUEUE_NAME
+              value: batchjob
+            - name: MSI_CLIENT_ID
+              value: a94c4f46-fef5-442a-88c2-bb6065aabb18
+        restartPolicy: Never
+  triggers:
+  - type: azure-servicebus
+    metadata:
+      queueName: batchjob
+      namespace: bjdsb-f81dfea
+      messageCount: "2"
+    authenticationRef:
+        name: adf-batch-job-demo-auth 
