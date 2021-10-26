@@ -22,7 +22,7 @@
 		"type": "TumblingWindowTrigger",
 		"typeProperties": {
 			"frequency": "Minute",
-			"interval": 15,
+			"interval": 5,
 			"startTime": "2021-10-26T12:59:00Z",
 			"delay": "00:00:00",
 			"maxConcurrency": 50,
