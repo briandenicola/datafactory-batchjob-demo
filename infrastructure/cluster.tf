@@ -115,7 +115,7 @@ resource "null_resource" "pod_identity_keda" {
       SUBSCRIPTION_ID     = "${data.azurerm_client_config.current.subscription_id}"
       IDENTITY_NAME       = "${var.cluster_name}-keda-identity"
       IDENTITY_RG         = "${azurerm_resource_group.k8s.name}"
-      NAMESPACE           = "default"
+      NAMESPACE           = "keda"
     }
   }
 }
