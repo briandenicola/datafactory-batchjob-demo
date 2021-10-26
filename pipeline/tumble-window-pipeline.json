@@ -1,0 +1,55 @@
+{
+	"name": "tumble-window-pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Push to Service Bus",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://bjdsb-f81dfea.servicebus.windows.net/batchjob/messages",
+					"connectVia": {
+						"referenceName": "AutoResolveIntegrationRuntime",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json",
+						"BrokerProperties": {
+							"value": "@concat('{\"CorrelationId\": \"',pipeline().RunId,'\"}')",
+							"type": "Expression"
+						}
+					},
+					"body": {
+						"value": "@concat('{ \"message\": { \"file\": \"', pipeline().parameters.filePath, '/',  pipeline().parameters.fileName, '\"}}')",
+						"type": "Expression"
+					},
+					"authentication": {
+						"resource": "https://servicebus.azure.net",
+						"credential": {
+							"referenceName": "bjddf-f81dfea-identity",
+							"type": "CredentialReference"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			},
+			"filePath": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}
