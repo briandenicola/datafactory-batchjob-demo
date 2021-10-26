@@ -11,6 +11,14 @@
 			"type": "string",
 			"defaultValue": "https://bjdsaf81dfea.blob.core.windows.net"
 		},
+		"Trigger_17u_properties_pipeline_parameters_windowStart": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
+		"Trigger_17u_properties_pipeline_parameters_windowEnd": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowEndTime"
+		},
 		"new-file-via-nfs_properties_sample-pipeline_parameters_fileName": {
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
@@ -75,6 +83,12 @@
 					},
 					"new-file-via-nfs_properties_typeProperties_scope": {
 						"value": "[parameters('new-file-via-nfs_properties_typeProperties_scope')]"
+					},
+					"Trigger_17u_properties_pipeline_parameters_windowStart": {
+						"value": "[parameters('Trigger_17u_properties_pipeline_parameters_windowStart')]"
+					},
+					"Trigger_17u_properties_pipeline_parameters_windowEnd": {
+						"value": "[parameters('Trigger_17u_properties_pipeline_parameters_windowEnd')]"
 					}
 				}
 			},

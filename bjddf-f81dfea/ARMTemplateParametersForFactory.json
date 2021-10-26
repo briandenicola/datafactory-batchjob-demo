@@ -8,6 +8,12 @@
 		"bjdsaf81dfea_properties_typeProperties_serviceEndpoint": {
 			"value": "https://bjdsaf81dfea.blob.core.windows.net"
 		},
+		"Trigger_17u_properties_pipeline_parameters_windowStart": {
+			"value": "@trigger().outputs.windowStartTime"
+		},
+		"Trigger_17u_properties_pipeline_parameters_windowEnd": {
+			"value": "@trigger().outputs.windowEndTime"
+		},
 		"new-file-via-nfs_properties_sample-pipeline_parameters_fileName": {
 			"value": "@triggerBody().fileName"
 		},
