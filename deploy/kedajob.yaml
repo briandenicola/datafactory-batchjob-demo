@@ -22,7 +22,7 @@ spec:
       spec:
         containers:
         - name: adf-batch-job-demo-job
-          image: bjd145.azurecr.io/queue-processor:c3cf0ee
+          image: bjd145.azurecr.io/queue-processor:a28a5f
           env:
             - name: SERVICE_BUS
               value: bjdsb-f81dfea
