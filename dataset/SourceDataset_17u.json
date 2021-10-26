@@ -1,0 +1,17 @@
+{
+	"name": "SourceDataset_17u",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "bjdsaf81dfea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "tumble"
+			}
+		}
+	}
+}
