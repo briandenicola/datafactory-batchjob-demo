@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_17u",
+				"name": "Copy to Input folder",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
