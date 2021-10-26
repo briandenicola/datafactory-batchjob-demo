@@ -12,13 +12,13 @@ namespace batchdemo.queue_processor
     {
         static async Task Main(string[] args)
         {
-            
             string QUEUE_NAME = System.Environment.GetEnvironmentVariable("QUEUE_NAME"); //batchjob
-            string SERVICE_BUS = System.Environment.GetEnvironmentVariable("SERVICE_BUS"); //${namespace}.servicebus.windows.net
+            string SERVICE_BUS = $"{System.Environment.GetEnvironmentVariable("SERVICE_BUS")}.servicebus.windows.net";
+            string userAssignedClientId = System.Environment.GetEnvironmentVariable("MSI_CLIENT_ID");
 
             Console.WriteLine($"Connecting to {SERVICE_BUS}/{QUEUE_NAME}");
 
-            var credential = new ChainedTokenCredential(new ManagedIdentityCredential(), new AzureCliCredential());
+            var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = userAssignedClientId })
             await using var client = new ServiceBusClient(SERVICE_BUS, credential);
 
             var receiver = client.CreateReceiver(QUEUE_NAME);
