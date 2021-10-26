@@ -11,7 +11,7 @@ az account set -s ${SUBSCRIPTION_ID}
 
 helm repo add kedacore https://kedacore.github.io/charts
 helm repo update
-helm upgrade -i keda kedacore/keda --namespace keda --create-namespace --version 2.2.0 --set podIdentity.activeDirectory.identity=${KEDA_IDENTITY}
+helm upgrade -i keda kedacore/keda --namespace keda --create-namespace --version 2.4.0 --set podIdentity.activeDirectory.identity=${KEDA_IDENTITY}
 
 RESOURCEID=`az identity show --name ${KEDA_IDENTITY} --resource-group ${RG} --query id -o tsv`
 az aks pod-identity add --resource-group ${RG} --cluster-name ${CLUSTER_NAME} --namespace keda --name ${KEDA_IDENTITY} --identity-resource-id ${RESOURCEID}
