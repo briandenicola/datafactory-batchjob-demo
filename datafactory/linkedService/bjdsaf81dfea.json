@@ -1,5 +1,6 @@
 {
 	"name": "bjdsaf81dfea",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureBlobStorage",

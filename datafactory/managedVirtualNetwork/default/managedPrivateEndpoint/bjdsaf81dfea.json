@@ -2,6 +2,9 @@
 	"name": "bjdsaf81dfea",
 	"properties": {
 		"privateLinkResourceId": "/subscriptions/5cd8aef3-0105-48cd-99bf-f616497eab80/resourceGroups/DevSub01_BatchProcessingDemo_RG/providers/Microsoft.Storage/storageAccounts/bjdsaf81dfea",
-		"groupId": "blob"
+		"groupId": "blob",
+		"fqdns": [
+			"bjdsaf81dfea.blob.core.windows.net"
+		]
 	}
 }

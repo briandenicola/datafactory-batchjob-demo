@@ -1,0 +1,15 @@
+{
+	"name": "bjddf-f81dfea",
+	"location": "southcentralus",
+	"identity": {
+		"type": "SystemAssigned,UserAssigned",
+		"principalId": "22279410-56e8-4315-b34b-2038ff74bbdd",
+		"tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+		"userAssignedIdentities": {
+			"/subscriptions/5cd8aef3-0105-48cd-99bf-f616497eab80/resourcegroups/DevSub01_BatchProcessingDemo_RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bjddf-f81dfea-identity": {
+				"clientId": "bf61bae9-6934-481f-a3ef-8669be17484f",
+				"principalId": "f710a540-0602-437e-858d-59f12c37ba3e"
+			}
+		}
+	}
+}

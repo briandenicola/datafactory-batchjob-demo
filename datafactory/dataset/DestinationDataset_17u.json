@@ -14,5 +14,6 @@
 				"container": "input"
 			}
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }
