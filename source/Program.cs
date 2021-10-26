@@ -18,7 +18,7 @@ namespace batchdemo.queue_processor
 
             Console.WriteLine($"Connecting to {SERVICE_BUS}/{QUEUE_NAME}");
 
-            var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = userAssignedClientId })
+            var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = userAssignedClientId });
             await using var client = new ServiceBusClient(SERVICE_BUS, credential);
 
             var receiver = client.CreateReceiver(QUEUE_NAME);
