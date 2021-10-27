@@ -2,7 +2,7 @@
 	"name": "Trigger_17u",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Started",
+		"runtimeState": "Stopped",
 		"pipeline": {
 			"pipelineReference": {
 				"referenceName": "tumble-window-pipeline",
