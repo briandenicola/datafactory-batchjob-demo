@@ -1,7 +1,7 @@
 pod_identity: 
   binding: bjdbatchdemo-batchjob-identity
   client_id: a94c4f46-fef5-442a-88c2-bb6065aabb18
-  
+
 image:
   repository: bjd145.azurecr.io/queue-processor
   version: a28a5f
@@ -9,3 +9,8 @@ image:
 service_bus:
   namespace: bjdsb-f81dfea
   queue_name: batchjob
+
+nfs:
+  pod_mount_point: /mnt/input
+  server: bjdsaf81dfea.blob.core.windows.net
+  mount_point:  /bjdsaf81dfea/input
