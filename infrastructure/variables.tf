@@ -3,8 +3,20 @@ variable "location" {
   default     = "centralus"
 }
 
+variable "resource_group_name" {
+  description = "The Azure Resource Group for the Data Factory components"
+}
+
+variable "k8s_resource_group_name" {
+  description = "The Azure Resource Group to deploy AKS"
+}
+
 variable "k8s_vnet_resource_group_name" {
   description = "The Resource Group name that contains the Vnet for AKS"
+}
+
+variable "private_endpoints_subnet" {
+  description = "The subnet name for Private Endpoints"
 }
 
 variable "k8s_subnet" {
@@ -25,10 +37,6 @@ variable "service_cidr" {
 
 variable "cluster_name" {
   description = "The cluster name"
-}
-
-variable "resource_group_name" {
-  description = "The Azure Resource Group to deploy AKS"
 }
 
 variable "agent_count" {
@@ -60,9 +68,14 @@ variable "load_balancer_sku" {
   description = "The type of load balancer to deploy as part of the AKS cluster"
 }
 
-variable "acr_subscription" {
+variable "core_subscription" {
   default     = "2deb88fe-eca8-499a-adb9-6e0ea8b6c1d2"
-  description = "The subscription where Azure Container Repo lives"
+  description = "The subscription where Core components lives"
+}
+
+variable "dns_resource_group" {
+  default     = "Core_Infra_DNS_RG"
+  description = "The Resource Grop where Azure Container Repo lives"
 }
 
 variable "acr_resource_group" {
