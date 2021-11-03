@@ -1,0 +1,42 @@
+{
+    "name": "k8s-pipeline",
+    "properties": {
+        "activities": [
+            {
+                "name": "Call Kube API Server",
+                "type": "WebActivity",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "url": "https://bjdk8s03-dns-63f0cf5c.hcp.centralus.azmk8s.io/api/v1/pods",
+                    "connectVia": {
+                        "referenceName": "AutoResolveIntegrationRuntime",
+                        "type": "IntegrationRuntimeReference"
+                    },
+                    "method": "GET",
+                    "headers": {
+                        "User-Agent": "kubectl/v1.21.2 (darwin/amd64) kubernetes/092fbfb"
+                    },
+                    "disableCertValidation": true,
+                    "authentication": {
+                        "resource": "6dae42f8-4368-4678-94ff-3960e28e3630",
+                        "credential": {
+                            "referenceName": "bjddf-f81dfea-identity",
+                            "type": "CredentialReference"
+                        }
+                    }
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2021-11-02T21:49:34Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}
