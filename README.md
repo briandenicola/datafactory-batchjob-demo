@@ -32,8 +32,8 @@ This is to demo how to use Azure Data Factory with AKS/KEDA to run batch jobs in
 1. cd infrastructure
 1. terraform init -backend=true -backend-config="access_key=${access_key}" -backend-config="key=uat.terraform.tfstate"
 1. terraform plan -out="uat.plan" -var "resource_group_name=DevSub_K8S_RG" -var-file="uat.tfvars"
-1. terraform apply -auto-approve "uat.plan
-1. ./aks-keda-install.sh ${SUBSCRIPTION_ID} ${RG} ${CLUSTER_NAME} ${KEDA_IDENTITY} ${BATCH_IDENTITY}
+1. terraform apply -auto-approve "uat.plan"
+1. ./aks-keda-install.sh $SUBSCRIPTION_ID $RG $CLUSTER_NAME $KEDA_IDENTITY $BATCH_IDENTITY
 
 ## Source
 ### Build
